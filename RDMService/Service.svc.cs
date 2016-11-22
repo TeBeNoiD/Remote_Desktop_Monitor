@@ -10,31 +10,31 @@ using System.Text;
 namespace RDMService
 {
 
-    public class Service1 : IServiceRDM
+    public class Service : IServiceRDM
     {
         public WSR_Result DownloadData(WSR_Params p)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public WSR_Result GetPseudos(WSR_Params p)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public WSR_Result Login(WSR_Params p)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public WSR_Result Logout(WSR_Params p)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         public WSR_Result UploadData(WSR_Params p)
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 }
