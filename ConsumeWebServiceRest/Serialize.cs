@@ -7,6 +7,7 @@ namespace ConsumeWebServiceRest
 {
     static class Serialize
     {
+        //essai push
         /// <summary>
         /// Méthode qui sérialize un 'object' en xml
         /// </summary>
