@@ -61,7 +61,7 @@ namespace RDMService
         /// <param name="key">Chaine de caractère définissant la clé du paramètre.</param>
         /// <param name="data"></param>
         /// <returns></returns>
-        private static WSR_Result VerifParamExist(WSR_Params p, string key, out object data)
+        protected static WSR_Result VerifParamExist(WSR_Params p, string key, out object data)
         {
             data = null;
 
@@ -73,7 +73,7 @@ namespace RDMService
             return null;
         }
 
-        private static WSR_Result VerifParamType<T>(WSR_Params p, string key, out T value) where T : class
+        protected static WSR_Result VerifParamType<T>(WSR_Params p, string key, out T value) where T : class
         {
             object data = null;
             value = null;
