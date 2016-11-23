@@ -11,8 +11,7 @@ namespace RDMService
 {
 
     public class Service : IServiceRDM
-    { 
-        //essai seb 
+    {     
         public WSR_Result DownloadData(WSR_Params p)
         {
             return null;
