@@ -14,7 +14,7 @@ namespace RDMService
 {
     public class Service : IServiceRDM
     {
-        // PLAGE DES CODES ERREUR POUR LE WebService ---> [1 - 200[
+        // PLAGE DES CODES ERREUR POUR LE WebService ---> [1 - 200]
         public const int CodeRet_Ok = 0;
         public const int CodeRet_PseudoUtilise = 1;
         public const int CodeRet_PseudoObligatoire = 2;
@@ -53,19 +53,113 @@ namespace RDMService
             else return result;
         }
 
+        /// Permet d'obtenir la liste des utilisateurs logués au WebService
+        /// </summary>
+        /// <param name="p">Dictionnaire contenant votre identifiant et votre mot de passe</param>
+        /// <returns>Valeurs de retour contenant la liste des utilisateurs connectés</returns>
+
         public WSR_Result GetPseudos(WSR_Params p)
         {
-            return null;
+            string Pseudo = null;
+            string Password = null;
+            WSR_Result ret = null;
+            List<string> ListKeys = null;
+
+            ret = VerifParamType(p, "pseudo", out Pseudo);
+            if (ret != null)
+                return ret;
+
+            ret = VerifParamType(p, "password", out Password);
+            if (ret != null)
+                return ret;
+
+            AccountError err = Account.GetKeys(Pseudo, Password, out ListKeys);
+
+            switch (err)
+            {
+                case AccountError.Ok:
+                    return new WSR_Result(ListKeys, true);
+                case AccountError.KeyNullOrEmpty:
+                    return new WSR_Result(CodeRet_PseudoObligatoire, Properties.Resources.PSEUDOOBLIGATOIRE);
+                case AccountError.PasswordNullOrEmpty:
+                    return new WSR_Result(CodeRet_PasswordObligatoire, Properties.Resources.PASSWORDOBLIGATOIRE);
+                case AccountError.keyNotFound:
+                    return new WSR_Result(CodeRet_Logout, Properties.Resources.PSEUDONONLOGUE);
+                case AccountError.PasswordWrong:
+                    return new WSR_Result(CodeRet_PasswordIncorrect, Properties.Resources.PASSWORDINCORRECT);
+                default:
+                    return new WSR_Result(CodeRet_ErreurInterneService, Properties.Resources.ERREURINTERNESERVICE);
+            }
         }
+
+        /// <summary>
+        /// Permet de se loguer au WebService
+        /// </summary>
+        /// <param name="p">Dictionnaire contenant votre identifiant</param>
+        /// <returns>Valeurs de retour contenant votre mot de passe. Il sera nécessaire pour le Logout et l'écriture de vos données</returns>
 
         public WSR_Result Login(WSR_Params p)
         {
-            return null;
+            string Pseudo = null;
+            string Password = null;
+            WSR_Result ret = null;
+       
+            ret = VerifParamType(p, "pseudo", out Pseudo);
+            if (ret != null)
+                return ret;
+
+            AccountError err = Account.Add(Pseudo, out Password);
+
+            switch (err)
+            {
+                case AccountError.Ok:
+                    return new WSR_Result(Password, true);
+                case AccountError.KeyNullOrEmpty:
+                    return new WSR_Result(CodeRet_PseudoObligatoire, Properties.Resources.PSEUDOOBLIGATOIRE);
+                case AccountError.KeyExist:
+                    return new WSR_Result(CodeRet_PseudoUtilise, Properties.Resources.PSEUDOUTILISE);
+                default:
+                    return new WSR_Result(CodeRet_ErreurInterneService, Properties.Resources.ERREURINTERNESERVICE);
+            }
         }
 
+        /// <summary>
+        /// Permet de se Déloguer du WebService
+        /// </summary>
+        /// <param name="p">Dictionnaire contenant votre identifiant et votre mot de passe></param>
+        /// <returns>Valeurs de retour</returns>
         public WSR_Result Logout(WSR_Params p)
         {
-            return null;
+            string pseudo = null;
+            string password = null;
+            WSR_Result ret = null;
+
+            ret = VerifParamType(p, "pseudo", out pseudo);
+            if (ret != null)
+                return ret;
+
+            ret = VerifParamType(p, "password", out password);
+            if (ret != null)
+                return ret;
+
+            AccountError err = Account.Remove(pseudo, password);
+
+            switch (err)
+            {
+                case AccountError.Ok:
+                    return new WSR_Result();
+                case AccountError.KeyNullOrEmpty:
+                    return new WSR_Result(CodeRet_PseudoObligatoire, Properties.Resources.PSEUDOOBLIGATOIRE);
+                case AccountError.PasswordNullOrEmpty:
+                    return new WSR_Result(CodeRet_PasswordObligatoire, Properties.Resources.PASSWORDOBLIGATOIRE);
+                case AccountError.keyNotFound:
+                    return new WSR_Result(CodeRet_Logout, Properties.Resources.PSEUDONONLOGUE);
+                case AccountError.PasswordWrong:
+                    return new WSR_Result(CodeRet_PasswordIncorrect, Properties.Resources.PASSWORDINCORRECT);
+                default:
+                    return new WSR_Result(CodeRet_ErreurInterneService, Properties.Resources.ERREURINTERNESERVICE);
+            }
+
         }
 
         public WSR_Result UploadData(WSR_Params p)
