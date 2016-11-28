@@ -143,7 +143,7 @@ namespace ConsumeWebServiceRest
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return new WSR_Result(WSR_Result.CodeRet_Deserialize, String.Format(Properties.Resources.ERREUR_DESERIALISATIONRETOUR));
             }

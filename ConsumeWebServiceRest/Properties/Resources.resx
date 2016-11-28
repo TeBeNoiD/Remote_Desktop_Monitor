@@ -133,9 +133,9 @@
     <value />
   </data>
   <data name="SERIALISATION_JSON" xml:space="preserve">
-    <value />
+    <value>application/json</value>
   </data>
   <data name="SERIALISATION_XML" xml:space="preserve">
-    <value />
+    <value>application/xml</value>
   </data>
 </root>

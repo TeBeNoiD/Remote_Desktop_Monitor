@@ -107,7 +107,7 @@ namespace ConsumeWebServiceRest.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
+        ///   Recherche une chaîne localisée semblable à application/json.
         /// </summary>
         internal static string SERIALISATION_JSON {
             get {
@@ -116,7 +116,7 @@ namespace ConsumeWebServiceRest.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à .
+        ///   Recherche une chaîne localisée semblable à application/xml.
         /// </summary>
         internal static string SERIALISATION_XML {
             get {
