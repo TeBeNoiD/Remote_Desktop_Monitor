@@ -63,6 +63,15 @@ namespace RDMService.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à .
         /// </summary>
+        internal static string ERREURINTERNESERVICE {
+            get {
+                return ResourceManager.GetString("ERREURINTERNESERVICE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
         internal static string PARAMKEYINCONNU {
             get {
                 return ResourceManager.GetString("PARAMKEYINCONNU", resourceCulture);
@@ -75,6 +84,51 @@ namespace RDMService.Properties {
         internal static string PARAMTYPEINVALID {
             get {
                 return ResourceManager.GetString("PARAMTYPEINVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        internal static string PASSWORDINCORRECT {
+            get {
+                return ResourceManager.GetString("PASSWORDINCORRECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        internal static string PASSWORDOBLIGATOIRE {
+            get {
+                return ResourceManager.GetString("PASSWORDOBLIGATOIRE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        internal static string PSEUDONONLOGUE {
+            get {
+                return ResourceManager.GetString("PSEUDONONLOGUE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        internal static string PSEUDOOBLIGATOIRE {
+            get {
+                return ResourceManager.GetString("PSEUDOOBLIGATOIRE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        internal static string PSEUDOUTILISE {
+            get {
+                return ResourceManager.GetString("PSEUDOUTILISE", resourceCulture);
             }
         }
     }
