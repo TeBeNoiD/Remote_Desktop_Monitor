@@ -102,9 +102,43 @@ namespace RDMService
             }
         }
 
+        /// <summary>
+        /// Permet de se Déloguer du WebService
+        /// </summary>
+        /// <param name="p">Dictionnaire contenant votre identifiant et votre mot de passe></param>
+        /// <returns>Valeurs de retour</returns>
         public WSR_Result Logout(WSR_Params p)
         {
-            return null;
+            string pseudo = null;
+            string password = null;
+            WSR_Result ret = null;
+
+            ret = VerifParamType(p, "pseudo", out pseudo);
+            if (ret != null)
+                return ret;
+
+            ret = VerifParamType(p, "password", out password);
+            if (ret != null)
+                return ret;
+
+            AccountError err = Account.Remove(pseudo, password);
+
+            switch (err)
+            {
+                case AccountError.Ok:
+                    return new WSR_Result();
+                case AccountError.KeyNullOrEmpty:
+                    return new WSR_Result(CodeRet_PseudoObligatoire, Properties.Resources.PSEUDOOBLIGATOIRE);
+                case AccountError.PasswordNullOrEmpty:
+                    return new WSR_Result(CodeRet_PasswordObligatoire, Properties.Resources.PASSWORDOBLIGATOIRE);
+                case AccountError.keyNotFound:
+                    return new WSR_Result(CodeRet_Logout, Properties.Resources.PSEUDONONLOGUE);
+                case AccountError.PasswordWrong:
+                    return new WSR_Result(CodeRet_PasswordIncorrect, Properties.Resources.PASSWORDINCORRECT);
+                default:
+                    return new WSR_Result(CodeRet_ErreurInterneService, Properties.Resources.ERREURINTERNESERVICE);
+            }
+
         }
 
         public WSR_Result UploadData(WSR_Params p)
