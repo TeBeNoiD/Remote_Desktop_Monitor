@@ -29,7 +29,28 @@ namespace RDMService
 
         public WSR_Result DownloadData(WSR_Params p)
         {
-            return null;
+            string pseudo;
+            string pwd;
+            string pseudoDownload;
+            object data;
+            WSR_Result result = VerifParamType(p, "pseudo", out pseudo);
+            if(result == null)
+            {
+                result = VerifParamType(p, "pwd", out pwd);
+                if (result == null)
+                {
+                    result = VerifParamType(p, "pseudoDowload", out pseudoDownload);
+                    if (result == null)
+                    {
+                        result = VerifParamType(p, "data", out data);
+                        Account.ReadData(pseudo, pwd, pseudoDownload, out data);
+                        return new WSR_Result(data, true);
+                    }
+                    else return result;
+                }
+                else return result;
+            }
+            else return result;
         }
 
         public WSR_Result GetPseudos(WSR_Params p)
@@ -49,6 +70,25 @@ namespace RDMService
 
         public WSR_Result UploadData(WSR_Params p)
         {
+            string pseudo;
+            string pwd;
+            string data;
+            WSR_Result result = VerifParamType(p, "pseudo", out pseudo);
+            if (result == null)
+            {
+                result = VerifParamType(p, "password", out pwd);
+                if (result == null)
+                {
+                    result = VerifParamType(p, "data", out data);
+                    if (result == null)
+                    {
+                        Account.WriteData(pseudo, pwd, data);
+                    }
+                    else return result;
+                }
+                else return result;
+            }
+            else return result;
             return null;
         }
 
