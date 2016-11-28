@@ -108,6 +108,24 @@ namespace RDMService.Properties {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à .
         /// </summary>
+        internal static string PSEUDODOWNLOADNONLOGUE {
+            get {
+                return ResourceManager.GetString("PSEUDODOWNLOADNONLOGUE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
+        internal static string PSEUDODOWNLOADOBLIGATOIRE {
+            get {
+                return ResourceManager.GetString("PSEUDODOWNLOADOBLIGATOIRE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à .
+        /// </summary>
         internal static string PSEUDONONLOGUE {
             get {
                 return ResourceManager.GetString("PSEUDONONLOGUE", resourceCulture);

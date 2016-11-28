@@ -132,6 +132,12 @@
   <data name="PASSWORDOBLIGATOIRE" xml:space="preserve">
     <value />
   </data>
+  <data name="PSEUDODOWNLOADNONLOGUE" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PSEUDODOWNLOADOBLIGATOIRE" xml:space="preserve">
+    <value />
+  </data>
   <data name="PSEUDONONLOGUE" xml:space="preserve">
     <value />
   </data>

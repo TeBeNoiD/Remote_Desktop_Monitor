@@ -27,32 +27,57 @@ namespace RDMService
         public const int CodeRet_ParamTypeInvalid = 11;
         public const int CodeRet_ErreurInterneService = 100;
 
+        /// <summary>
+        /// Permet de lire les données associés à un compte utilisateur
+        /// </summary>
+        /// <param name="p">Dictionnaire contenant l'identifiant, le mot de passe et l'identifiant
+        /// du compte à lire</param>
+        /// <returns>Valeurs de retour</returns>
         public WSR_Result DownloadData(WSR_Params p)
         {
-            string pseudo;
-            string pwd;
-            string pseudoDownload;
-            object data;
-            WSR_Result result = VerifParamType(p, "pseudo", out pseudo);
-            if(result == null)
-            {
-                result = VerifParamType(p, "pwd", out pwd);
-                if (result == null)
-                {
-                    result = VerifParamType(p, "pseudoDowload", out pseudoDownload);
-                    if (result == null)
-                    {
-                        result = VerifParamType(p, "data", out data);
-                        Account.ReadData(pseudo, pwd, pseudoDownload, out data);
-                        return new WSR_Result(data, true);
-                    }
-                    else return result;
-                }
-                else return result;
-            }
-            else return result;
-        }
+            string pseudo = null;
+            string pwd = null;
+            string pseudoDownload = null;
+            object data = null;
+            WSR_Result ret = null;
 
+            ret = VerifParamType(p, "pseudo", out pseudo);
+            if(ret == null)
+            {
+                ret = VerifParamType(p, "pwd", out pwd);
+                if (ret == null)
+                {
+                    ret = VerifParamType(p, "pseudoDowload", out pseudoDownload);
+                    if (ret == null)
+                    {
+                        AccountError err = Account.ReadData(pseudo, pwd, pseudoDownload, out data);
+                        switch (err)
+                        {
+                            case AccountError.Ok:
+                                return new WSR_Result(data, false);
+                            case AccountError.KeyNullOrEmpty:
+                                return new WSR_Result(CodeRet_PseudoObligatoire, Properties.Resources.PSEUDOOBLIGATOIRE);
+                            case AccountError.PasswordNullOrEmpty:
+                                return new WSR_Result(CodeRet_PasswordObligatoire, Properties.Resources.PASSWORDOBLIGATOIRE);
+                            case AccountError.keyDownloadNullOrEmpty:
+                                return new WSR_Result(CodeRet_PseudoDownloadObligatoire, Properties.Resources.PSEUDODOWNLOADOBLIGATOIRE);
+                            case AccountError.keyNotFound:
+                                return new WSR_Result(CodeRet_Logout, Properties.Resources.PSEUDONONLOGUE);
+                            case AccountError.PasswordWrong:
+                                return new WSR_Result(CodeRet_PasswordIncorrect, Properties.Resources.PASSWORDINCORRECT);
+                            case AccountError.keyDownloadNotFound:
+                                return new WSR_Result(CodeRet_PseudoDownloadLogout, String.Format(Properties.Resources.PSEUDODOWNLOADNONLOGUE, pseudoDownload));
+                            default:
+                                return new WSR_Result(CodeRet_ErreurInterneService, Properties.Resources.ERREURINTERNESERVICE);
+                        }
+                    }
+                    else return ret;
+                }
+                else return ret;
+            }
+            else return ret;
+        }
+        ///<summary>
         /// Permet d'obtenir la liste des utilisateurs logués au WebService
         /// </summary>
         /// <param name="p">Dictionnaire contenant votre identifiant et votre mot de passe</param>
@@ -162,28 +187,49 @@ namespace RDMService
 
         }
 
+        /// <summary>
+        /// Permet d'écrire des données associés au compte utlisateur
+        /// </summary>
+        /// <param name="p">Dictionnaire contenant l'identifiant, le mot de passe et
+        /// les données à écrire</param>
+        /// <returns>valeurs de retour</returns>
         public WSR_Result UploadData(WSR_Params p)
         {
-            string pseudo;
-            string pwd;
-            string data;
-            WSR_Result result = VerifParamType(p, "pseudo", out pseudo);
-            if (result == null)
+            string pseudo = null;
+            string pwd = null ;
+            object data = null;
+            WSR_Result ret = null;
+            ret = VerifParamType(p, "pseudo", out pseudo);
+            if (ret == null)
             {
-                result = VerifParamType(p, "password", out pwd);
-                if (result == null)
+                ret = VerifParamType(p, "password", out pwd);
+                if (ret == null)
                 {
-                    result = VerifParamType(p, "data", out data);
-                    if (result == null)
+                    ret = VerifParamExist(p, "data", out data);
+                    if (ret == null)
                     {
-                        Account.WriteData(pseudo, pwd, data);
+                        AccountError err = Account.WriteData(pseudo, pwd, data);
+                        switch (err)
+                        {
+                            case AccountError.Ok:
+                                return new WSR_Result();
+                            case AccountError.KeyNullOrEmpty:
+                                return new WSR_Result(CodeRet_PseudoObligatoire, Properties.Resources.PSEUDOOBLIGATOIRE);
+                            case AccountError.PasswordNullOrEmpty:
+                                return new WSR_Result(CodeRet_PasswordObligatoire, Properties.Resources.PASSWORDOBLIGATOIRE);
+                            case AccountError.keyNotFound:
+                                return new WSR_Result(CodeRet_Logout, Properties.Resources.PSEUDONONLOGUE);
+                            case AccountError.PasswordWrong:
+                                return new WSR_Result(CodeRet_PasswordIncorrect, Properties.Resources.PASSWORDINCORRECT);
+                            default:
+                                return new WSR_Result(CodeRet_ErreurInterneService, Properties.Resources.ERREURINTERNESERVICE);
+                        }
                     }
-                    else return result;
+                    else return ret;
                 }
-                else return result;
+                else return ret;
             }
-            else return result;
-            return null;
+            else return ret;
         }
 
         #region Fonctions perso
