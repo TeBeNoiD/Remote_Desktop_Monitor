@@ -7,13 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDMService", "RDMService\RD
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsumeWebServiceRest", "ConsumeWebServiceRest\ConsumeWebServiceRest.csproj", "{31F3783D-D16F-4049-8ED2-D78C12DA6391}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDMDALWSR", "RDMDALWSR\RDMDALWSR.csproj", "{9111087F-966D-4420-B27D-D032BEE75CA8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestRDMService", "UnitTestRDMService\UnitTestRDMService.csproj", "{3D4F9A78-6467-4851-BAB4-C9B7005A85DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTestWS", "ConsoleTestWS\ConsoleTestWS.csproj", "{BE1B30C0-1841-405F-B73B-5E6868706255}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientTest", "ClientTest\ClientTest.csproj", "{8D391D62-AFFA-4319-9F7A-C976793AD1D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RDMDALWSR", "RDMDALWSR\RDMDALWSR.csproj", "{BCDE0624-244C-499E-9C83-D3C12FF05789}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,6 @@ Global
 		{31F3783D-D16F-4049-8ED2-D78C12DA6391}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31F3783D-D16F-4049-8ED2-D78C12DA6391}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31F3783D-D16F-4049-8ED2-D78C12DA6391}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9111087F-966D-4420-B27D-D032BEE75CA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9111087F-966D-4420-B27D-D032BEE75CA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9111087F-966D-4420-B27D-D032BEE75CA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9111087F-966D-4420-B27D-D032BEE75CA8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3D4F9A78-6467-4851-BAB4-C9B7005A85DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3D4F9A78-6467-4851-BAB4-C9B7005A85DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D4F9A78-6467-4851-BAB4-C9B7005A85DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{8D391D62-AFFA-4319-9F7A-C976793AD1D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D391D62-AFFA-4319-9F7A-C976793AD1D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D391D62-AFFA-4319-9F7A-C976793AD1D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCDE0624-244C-499E-9C83-D3C12FF05789}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCDE0624-244C-499E-9C83-D3C12FF05789}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCDE0624-244C-499E-9C83-D3C12FF05789}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCDE0624-244C-499E-9C83-D3C12FF05789}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
