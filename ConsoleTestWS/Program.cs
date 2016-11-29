@@ -18,17 +18,29 @@ namespace ConsoleTestWS
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Magenta;
 
-            Response();
+            WSR_Params p = new WSR_Params();
+            
+            /*p.Add("pseudo", "titi");
+            Response("Login", p);*/
+
+            Response("GetPseudos", p);
             Console.ReadKey();
         }
 
-        public static async void Response()
+        public static async void Response(string resource, WSR_Params p)
         {
             _CancellationAsync = new CancellationTokenSource();
-            WSR_Params p = new WSR_Params();
-            p.Add("pseudo", "toto");
-            WSR_Result r = await ConsumeWSR.Call(@"http://localhost:4000/Service.svc/Login", p, TypeSerializer.Json, _CancellationAsync.Token);
-            Console.WriteLine("mot de passe : " + r.Data);
+            
+            WSR_Result r = await ConsumeWSR.Call(@"http://localhost:4000/Service.svc/" + resource, p, TypeSerializer.Json, _CancellationAsync.Token);
+
+
+            List<string> lst = (List<string>)r.Data;
+            foreach (string item in lst)
+            {
+                Console.WriteLine(item);
+            }
+            
+            //Console.WriteLine("mot de passe : " + r.Data);
         }
     }
 }

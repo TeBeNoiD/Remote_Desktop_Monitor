@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestRDMService", "UnitT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTestWS", "ConsoleTestWS\ConsoleTestWS.csproj", "{BE1B30C0-1841-405F-B73B-5E6868706255}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientTest", "ClientTest\ClientTest.csproj", "{8D391D62-AFFA-4319-9F7A-C976793AD1D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BE1B30C0-1841-405F-B73B-5E6868706255}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE1B30C0-1841-405F-B73B-5E6868706255}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE1B30C0-1841-405F-B73B-5E6868706255}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D391D62-AFFA-4319-9F7A-C976793AD1D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D391D62-AFFA-4319-9F7A-C976793AD1D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D391D62-AFFA-4319-9F7A-C976793AD1D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D391D62-AFFA-4319-9F7A-C976793AD1D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

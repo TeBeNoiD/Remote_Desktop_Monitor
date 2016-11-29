@@ -16,7 +16,7 @@ namespace RDMService
         WSR_Result Logout(WSR_Params p);
 
         [OperationContract]
-        [WebInvoke(UriTemplate = "GetPseudos", Method = "POST", RequestFormat = WebMessageFormat.Xml, ResponseFormat = WebMessageFormat.Xml, BodyStyle = WebMessageBodyStyle.Bare)]
+        [WebInvoke(UriTemplate = "GetPseudos", Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json, BodyStyle = WebMessageBodyStyle.Bare)]
         WSR_Result GetPseudos(WSR_Params p);
 
         [OperationContract]
