@@ -1,4 +1,5 @@
 ﻿using RDMDALWSR;
+using RDMWinPhone.Extentions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
